@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { ShoppingCart, User, Menu, X, UtensilsCrossed } from "lucide-react";
 import { useCartContext } from "@/contexts/CartContext";
+import { NotificationDropdown } from "@/components/NotificationDropdown";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
@@ -46,8 +47,9 @@ export function Navbar() {
             ))}
           </div>
 
-          {/* Cart & Profile */}
-          <div className="flex items-center gap-4">
+          {/* Cart, Notifications & Profile */}
+          <div className="flex items-center gap-2">
+            <NotificationDropdown />
             <Link
               to="/cart"
               className="relative p-2 rounded-xl hover:bg-secondary transition-colors duration-300"

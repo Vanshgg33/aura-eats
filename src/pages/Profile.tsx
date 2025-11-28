@@ -1,9 +1,10 @@
-import { User, Mail, Phone, MapPin, CreditCard, Bell, LogOut, ChevronRight, Package, Heart, Settings } from "lucide-react";
-import { Link } from "react-router-dom";
+import { User, Mail, Phone, MapPin, CreditCard, Bell, LogOut, ChevronRight, Package, Heart, Settings, Shield } from "lucide-react";
+import { Link, useNavigate } from "react-router-dom";
 import { useCartContext } from "@/contexts/CartContext";
 
 const Profile = () => {
   const { orders } = useCartContext();
+  const navigate = useNavigate();
 
   const menuItems = [
     { icon: Package, label: "My Orders", path: "/orders", count: orders.length },
@@ -42,8 +43,17 @@ const Profile = () => {
             </div>
           </div>
 
-          {/* Edit Button */}
-          <button className="btn-outline">Edit Profile</button>
+          {/* Buttons */}
+          <div className="flex flex-col gap-2">
+            <button className="btn-outline">Edit Profile</button>
+            <button
+              onClick={() => navigate("/admin")}
+              className="btn-primary flex items-center gap-2"
+            >
+              <Shield className="w-4 h-4" />
+              Admin Dashboard
+            </button>
+          </div>
         </div>
 
         {/* Stats */}
